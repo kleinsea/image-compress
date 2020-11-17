@@ -1,12 +1,12 @@
-import { ImageCompressFile, ImageCompressOptions, ImageCompressDownloadType } from './types/index'
+import { ImageRotationFile, ImageRotationOptions, ImageRotationDownloadType } from './types/index'
 import { transForm, getMaxPow, dataURItoBlob } from './utils/transForm'
 
-class ImageCompress {
-  private file: ImageCompressFile;
-  private options: ImageCompressOptions;
+export default class ImageRotation {
+  private file: ImageRotationFile;
+  private options: ImageRotationOptions;
   private deg: number;
-  private downloadType: ImageCompressDownloadType;
-  constructor(file: ImageCompressFile, options?: ImageCompressOptions) {
+  private downloadType: ImageRotationDownloadType;
+  constructor(file: ImageRotationFile, options?: ImageRotationOptions) {
     this.file = file
     this.options = {
       isDrawPngBg: false,
@@ -16,7 +16,7 @@ class ImageCompress {
     this.deg = 0
     this.downloadType = 'image/jpeg'
   }
-  public generate(deg: number, downloadType: ImageCompressDownloadType = 'image/jpeg'): Promise<string> {
+  public generate(deg: number = 0, downloadType: ImageRotationDownloadType = 'image/jpeg'): Promise<string> {
     if (['image/jpeg', 'image/jpeg', 'image/webp'].includes(downloadType)) {
       this.downloadType = downloadType
     } else {
@@ -109,5 +109,3 @@ class ImageCompress {
     return dataURItoBlob(dataURI)
   }
 }
-
-export default ImageCompress
