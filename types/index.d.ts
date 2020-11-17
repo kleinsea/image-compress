@@ -8,7 +8,9 @@ export interface ImageRotationOptions {
 export type ImageRotationFile = File | string;
 export type ImageRotationDownloadType = 'image/png' | 'image/jpeg' | 'image/webp';
 
-export declare class ImageRotation {
+export class ImageRotation {
+  constructor(file: ImageRotationFile, options?: ImageRotationOptions);
   generate(rotate?: number, downloadType?: ImageRotationDownloadType): Promise<string>;
   toBlob(dataURI: string): Promise<Blob>;
 }
+export default ImageRotation;

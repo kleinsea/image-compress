@@ -1,4 +1,4 @@
-import { ImageRotationFile, ImageRotationOptions, ImageRotationDownloadType } from './types/index'
+import { ImageRotationFile, ImageRotationOptions, ImageRotationDownloadType } from '../types/index'
 import { transForm, getMaxPow, dataURItoBlob } from './utils/transForm'
 
 export default class ImageRotation {
