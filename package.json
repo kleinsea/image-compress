@@ -1,6 +1,6 @@
 {
   "name": "image-rotation",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Help the image complete compression and support rotation operations at any angle.",
   "main": "dist/index.js",
   "keywords": [

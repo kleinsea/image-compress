@@ -53,18 +53,27 @@ export default class ImageRotation {
     const { maxLength = 0 } = this.options
     let w = img.width
     let h = img.height
-    if (maxLength && Math.max(w, h) > maxLength) {
-      if (w < h) {
-        w = (maxLength * img.width) / img.height
-        h = maxLength
+    const { x, y } = transForm(w, h, this.deg)
+    let fx = 0, fy = 0;
+    if (maxLength && Math.max(x, y) > maxLength) {
+      if (x < y) {
+        fx = (maxLength * x) / y
+        fy = maxLength
       } else {
-        w = maxLength
-        h = (maxLength * img.height) / img.width
+        fx = maxLength
+        fy = (maxLength * y) / x
       }
     }
-    const { x, y } = transForm(w, h, this.deg)
-    canvas.width = x
-    canvas.height = y
+    fx = Math.ceil(fx)
+    fy = Math.ceil(fy)
+    if(fx !== x || fy !== y) {
+      // revised
+      w = Math.ceil(w * (fx / x))
+      h = Math.ceil(h * (fy / y))
+    }
+
+    canvas.width = fx
+    canvas.height = fy
     if (this.options.background && (this.downloadType !== 'image/png' || this.downloadType === 'image/png' && this.options.isDrawPngBg === true)) {
       ctx.fillStyle = this.options.background
       ctx.fillRect(0, 0, canvas.width, canvas.height)

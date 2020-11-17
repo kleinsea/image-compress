@@ -2,7 +2,7 @@
 This module can help the image complete compression and support rotation operations at any angle.
 ## Installation
 ```bash
-  npm install --save image-rotation
+  yarn add image-rotation
 ```
 ## Usage
 ```js
