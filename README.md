@@ -22,7 +22,7 @@ key | desc | type | defalut
 ----|------|----|----
 maxLength| The maximum edge size |number| null
 quality|compression quality|number|0.92
-background|bacnground|string|null
+background|background|string|null
 isDrawPngBg| whether to draw background for image/png | boolean | false
 ```js
 import ImageRotation from 'image-rotation'
@@ -52,9 +52,8 @@ dataURI(required)| base64 file |string|
 const imageRotate = new ImageRotation('your html file data')
 imageRotate.generate(0, 'image/png').then(res=> {
   // base64
-  imageRotate.toBlob(res).then(blob=> {
-    // blob
-  })
+  const blob = imageRotate.toBlob(res)
+  // blob
 })
 ```
 
