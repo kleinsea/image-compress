@@ -44,7 +44,7 @@ imageRotate.generate(45, 'image/png').then(res=> {
   // base64
 }).catch()
 ```
-### toBlob(dataURI: string): Promise<Blob>
+### toBlob(dataURI: string): Blob
 key | desc | type |
 ----|------|----
 dataURI(required)| base64 file |string|
