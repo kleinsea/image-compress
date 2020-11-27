@@ -54,7 +54,7 @@ export default class ImageRotation {
     let w = img.width
     let h = img.height
     const { x, y } = transForm(w, h, this.deg)
-    let fx = 0, fy = 0;
+    let fx = x, fy = y;
     if (maxLength && Math.max(x, y) > maxLength) {
       if (x < y) {
         fx = (maxLength * x) / y
