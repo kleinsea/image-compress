@@ -23,7 +23,7 @@ export default class ImageRotation {
       this.downloadType = 'image/jpeg'
     }
     this.downloadType = downloadType
-    let _deg = Math.abs(deg) - getMaxPow(Math.abs(deg))
+    let _deg = getMaxPow(Math.abs(deg))
     if (_deg <= 360 && _deg >= 0) {
       this.deg = deg >= 0 ? _deg : 360 - _deg
     } else {

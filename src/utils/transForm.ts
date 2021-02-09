@@ -5,7 +5,7 @@ function getPos(xcenter: number, ycenter: number, x: number, y: number, _rotate:
   return { x: x1, y: y1 }
 }
 
-export let transForm = (width: number, height: number, rotate: number) => {
+export const transForm = (width: number, height: number, rotate: number) => {
   const xcenter = width / 2
   const ycenter = height / 2
   const res = [
@@ -14,22 +14,20 @@ export let transForm = (width: number, height: number, rotate: number) => {
     getPos(xcenter, ycenter, width, 0, 180 - rotate),
     getPos(xcenter, ycenter, 0, 0, 180 - rotate)
   ]
-  let x1 = 0, y1 = 0, x2 = 0, y2 = 0
+  const xList: number[] = []; const yList: number[] = []
   res.map(v => {
-    if (v.x > x1) { x1 = v.x }
-    if (v.x < x2) { x2 = v.x }
-    if (v.y > y1) { y1 = v.y }
-    if (v.y < y2) { y2 = v.y }
+    xList.push(v.x)
+    yList.push(v.y)
   })
-  return { x: Math.ceil(x1 - x2), y: Math.ceil(y1 - y2) }
+  return { x: Math.round(Math.max(...xList) - Math.min(...xList)), y: Math.round(Math.max(...yList) - Math.min(...yList)) }
 }
 
 export function getMaxPow(total: number) {
-  let i = 0
-  while (total >= Math.pow(360, i)) {
-    i++
+  let _total = total
+  while (_total >= 360) {
+    _total -= 360
   }
-  return Math.pow(360, i - 1)
+  return _total
 }
 
 const dataURItoBuffer = (dataURI: string) => {
